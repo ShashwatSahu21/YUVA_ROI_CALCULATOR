@@ -288,7 +288,7 @@ Your Partner in Youth-First Growth Strategy`;
             <div className="bg-red-50 border-2 border-red-200 rounded-lg p-4">
               <p className="text-sm text-gray-600 mb-2">Lost youth customers (due to poor conversion)</p>
               <p className="text-3xl font-bold text-red-600">
-                ~{results.youthVisitors ? Math.round(results.youthVisitors * 0.04 - results.youthCustomers).toLocaleString() : 0}
+                ~{results.youthVisitors ? Math.round(results.youthVisitors * 0.04 - (results.youthCustomers || 0)).toLocaleString() : 0}
               </p>
               <p className="text-xs text-gray-500 mt-1">Based on 6% benchmark vs your {inputs.currentConversion}%</p>
             </div>
@@ -296,7 +296,7 @@ Your Partner in Youth-First Growth Strategy`;
             <div className="bg-red-50 border-2 border-red-200 rounded-lg p-4">
               <p className="text-sm text-gray-600 mb-2">Monthly revenue leakage</p>
               <p className="text-3xl font-bold text-red-600">
-                {formatCurrency(results.youthVisitors ? Math.round(results.youthVisitors * 0.04 - results.youthCustomers) * inputs.avgOrderValue : 0)}
+                {formatCurrency(results.youthVisitors ? Math.round(results.youthVisitors * 0.04 - (results.youthCustomers || 0)) * inputs.avgOrderValue : 0)}
               </p>
             </div>
 
@@ -338,10 +338,10 @@ Your Partner in Youth-First Growth Strategy`;
               <TrendingUp className="mx-auto mb-3 text-blue-600" size={32} />
               <p className="text-sm text-gray-600 mb-2">Additional Revenue/Month</p>
               <p className="text-4xl font-bold text-blue-600">
-                {formatCurrency(results.additionalRevenue)}
+                {formatCurrency(results.additionalRevenue || 0)}
               </p>
               <p className="text-xs text-gray-500 mt-2">
-                {((results.additionalRevenue / results.currentRevenue) * 100).toFixed(0)}% increase
+                {((((results.additionalRevenue || 0) / (results.currentRevenue || 1)) * 100)).toFixed(0)}% increase
               </p>
             </div>
 
@@ -349,7 +349,7 @@ Your Partner in Youth-First Growth Strategy`;
               <DollarSign className="mx-auto mb-3 text-purple-600" size={32} />
               <p className="text-sm text-gray-600 mb-2">CAC Savings/Month</p>
               <p className="text-4xl font-bold text-purple-600">
-                {formatCurrency(results.costSavings)}
+                {formatCurrency(results.costSavings || 0)}
               </p>
               <p className="text-xs text-gray-500 mt-2">
                 Through organic advocacy
@@ -360,12 +360,12 @@ Your Partner in Youth-First Growth Strategy`;
           <div className="bg-gradient-to-r from-emerald-500 to-green-600 text-white rounded-xl p-8 text-center">
             <p className="text-lg mb-2 opacity-90">Total Monthly Impact</p>
             <p className="text-6xl font-bold mb-4">
-              {formatCurrency(results.totalMonthlyImpact)}
+              {formatCurrency(results.totalMonthlyImpact || 0)}
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 text-left">
               <div className="bg-white/20 backdrop-blur rounded-lg p-4">
                 <p className="text-sm opacity-90">Annual Impact</p>
-                <p className="text-2xl font-bold">{formatCurrency(results.annualImpact)}</p>
+                <p className="text-2xl font-bold">{formatCurrency(results.annualImpact || 0)}</p>
               </div>
               <div className="bg-white/20 backdrop-blur rounded-lg p-4">
                 <p className="text-sm opacity-90">ROI Multiple</p>
@@ -382,6 +382,7 @@ Your Partner in Youth-First Growth Strategy`;
             </div>
           </div>
         </div>
+      </div>
 
         <div className="mt-8 bg-gray-50 rounded-lg p-6">
           <h4 className="font-bold mb-4 flex items-center gap-2">
@@ -467,39 +468,6 @@ Your Partner in Youth-First Growth Strategy`;
               </div>
             </form>
           )}
-        </div>
-
-        <div className="mt-12 bg-gray-50 rounded-lg p-6">
-          <h4 className="font-bold mb-4 flex items-center gap-2">
-            <CheckCircle className="text-green-500" size={20} />
-            How We Achieve These Results
-          </h4>
-          <div className="grid md:grid-cols-2 gap-4 text-sm">
-            <div className="flex items-start gap-2">
-              <div className="w-2 h-2 bg-purple-500 rounded-full mt-1.5 flex-shrink-0"></div>
-              <p><span className="font-semibold">Fix conversion killers:</span> Pricing barriers, payment friction, trust signals</p>
-            </div>
-            <div className="flex items-start gap-2">
-              <div className="w-2 h-2 bg-purple-500 rounded-full mt-1.5 flex-shrink-0"></div>
-              <p><span className="font-semibold">Youth-first messaging:</span> Rewrite copy that actually resonates with 18-28 year olds</p>
-            </div>
-            <div className="flex items-start gap-2">
-              <div className="w-2 h-2 bg-purple-500 rounded-full mt-1.5 flex-shrink-0"></div>
-              <p><span className="font-semibold">Community-led growth:</span> Build ambassador programs and referral loops</p>
-            </div>
-            <div className="flex items-start gap-2">
-              <div className="w-2 h-2 bg-purple-500 rounded-full mt-1.5 flex-shrink-0"></div>
-              <p><span className="font-semibold">Creator partnerships:</span> Replace expensive ads with authentic youth advocates</p>
-            </div>
-            <div className="flex items-start gap-2">
-              <div className="w-2 h-2 bg-purple-500 rounded-full mt-1.5 flex-shrink-0"></div>
-              <p><span className="font-semibold">Campus penetration:</span> Strategic presence in top 50 colleges</p>
-            </div>
-            <div className="flex items-start gap-2">
-              <div className="w-2 h-2 bg-purple-500 rounded-full mt-1.5 flex-shrink-0"></div>
-              <p><span className="font-semibold">UGC engine:</span> Turn customers into content creators</p>
-            </div>
-          </div>
         </div>
       </div>
 
